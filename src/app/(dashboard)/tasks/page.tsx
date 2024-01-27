@@ -1,10 +1,9 @@
-import Sidebar, { SidebarItem } from "@/feature/layout/Sidebar/Sidebar";
-import { Settings, Briefcase } from "lucide-react";
+import * as React from "react";
 
 export default function TasksPage() {
   return (
-    <>
+    <div>
       <p>sdfsfs</p>
-    </>
+    </div>
   );
 }

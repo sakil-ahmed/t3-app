@@ -7,6 +7,7 @@ import { ProtectedLayout } from "@/app/ProtectedLayout";
 import { Provider } from "@/app/Provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
+import React from "react";
 
 const inter = Inter({
   subsets: ["latin"],
