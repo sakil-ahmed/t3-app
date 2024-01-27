@@ -51,7 +51,7 @@ export function RegistrationForm() {
       void signIn("credentials", {
         ...signInData,
         redirect: true,
-        callbackUrl: "/projects",
+        callbackUrl: "/tasks",
       });
     },
   });

@@ -45,7 +45,7 @@ export function LoginForm() {
     const res = await signIn("credentials", {
       ...neData,
       redirect: true,
-      callbackUrl: "/projects",
+      callbackUrl: "/tasks",
     });
     console.log(res);
   };
