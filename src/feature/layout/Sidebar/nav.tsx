@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useGlobalStore } from "@/store/global.store";
+import { usePathname } from "next/navigation";
 
 interface NavProps {
   links: {
@@ -18,11 +19,14 @@ interface NavProps {
     label?: string;
     icon: LucideIcon;
     variant: "default" | "ghost";
+    path: string;
   }[];
 }
 
 export function Nav({ links }: NavProps) {
   const { isCollapsed } = useGlobalStore();
+  const pathname = usePathname().split("/");
+
   return (
     <div
       data-collapsed={isCollapsed}
@@ -34,9 +38,15 @@ export function Nav({ links }: NavProps) {
             <Tooltip key={index} delayDuration={0}>
               <TooltipTrigger asChild>
                 <Link
-                  href="/"
+                  href={link.path}
                   className={cn(
-                    buttonVariants({ variant: link.variant, size: "icon" }),
+                    buttonVariants({
+                      variant:
+                        link.path.split("/")[2] === pathname[2]
+                          ? "default"
+                          : "ghost",
+                      size: "icon",
+                    }),
                     "h-9 w-9",
                     link.variant === "default" &&
                       "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
@@ -58,9 +68,15 @@ export function Nav({ links }: NavProps) {
           ) : (
             <Link
               key={index}
-              href="/"
+              href={link.path}
               className={cn(
-                buttonVariants({ variant: link.variant, size: "lg" }),
+                buttonVariants({
+                  variant:
+                    link.path.split("/")[2] === pathname[2]
+                      ? "default"
+                      : "ghost",
+                  size: "lg",
+                }),
                 link.variant === "default" &&
                   "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
                 "justify-start",

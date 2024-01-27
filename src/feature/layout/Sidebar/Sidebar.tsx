@@ -8,7 +8,7 @@ import { Nav } from "@/feature/layout/Sidebar/nav";
 import { useGlobalStore } from "@/store/global.store";
 
 export function Sidebar() {
-  const { isCollapsed } = useGlobalStore();
+  const { isCollapsed, selectedProject } = useGlobalStore();
 
   return (
     <div
@@ -30,12 +30,14 @@ export function Sidebar() {
               label: "",
               icon: ListTodo,
               variant: "default",
+              path: `/${selectedProject?.id}/board`,
             },
             {
               title: "Analytics",
               label: "",
               icon: GanttChartSquare,
               variant: "ghost",
+              path: `/${selectedProject?.id}/analytics`,
             },
           ]}
         />

@@ -2,12 +2,14 @@
 import { type ReactNode, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { useGlobalStore } from "@/store/global.store";
 
 export const ProtectedLayout = ({ children }: { children: ReactNode }) => {
   const session = useSession();
   const router = useRouter();
   const [childComp, setChildren] = useState<ReactNode>(LoadingScreen);
   const pathname = usePathname();
+  const { selectedProject } = useGlobalStore();
 
   useEffect(() => {
     const isAuthRoute = pathname.split("/").includes("auth");
@@ -16,11 +18,11 @@ export const ProtectedLayout = ({ children }: { children: ReactNode }) => {
       return setChildren(LoadingScreen);
     }
     if (isAuthRoute && session.data) {
-      router.push("/tasks");
+      router.push(`/${selectedProject?.id}/board`);
       return setChildren(LoadingScreen);
     }
     setChildren(children);
-  }, [children, pathname, router, session]);
+  }, [children, pathname, router, selectedProject?.id, session]);
 
   return <>{childComp}</>;
 };

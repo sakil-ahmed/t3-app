@@ -44,8 +44,7 @@ export function LoginForm() {
     };
     const res = await signIn("credentials", {
       ...neData,
-      redirect: true,
-      callbackUrl: "/tasks",
+      redirect: false,
     });
     console.log(res);
   };

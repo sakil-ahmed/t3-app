@@ -50,8 +50,7 @@ export function RegistrationForm() {
       };
       void signIn("credentials", {
         ...signInData,
-        redirect: true,
-        callbackUrl: "/tasks",
+        redirect: false,
       });
     },
   });
