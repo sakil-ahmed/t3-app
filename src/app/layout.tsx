@@ -8,6 +8,7 @@ import { Provider } from "@/app/Provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
 import React from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,10 @@ export default async function RootLayout({
       <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider>
           <Provider session={session}>
-            <ProtectedLayout>{children}</ProtectedLayout>
+            <ProtectedLayout>
+              {children}
+              <SpeedInsights />
+            </ProtectedLayout>
           </Provider>
         </TRPCReactProvider>
       </body>
