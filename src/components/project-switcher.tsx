@@ -43,6 +43,7 @@ import {
 } from "@/server/api/routers/projects/project.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { globalStore, useGlobalStore } from "@/store/global.store";
+import { usePathname, useRouter } from "next/navigation";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
@@ -53,6 +54,8 @@ interface TeamSwitcherProps extends PopoverTriggerProps {
 }
 
 export default function ProjectSwitcher({ className }: TeamSwitcherProps) {
+  const router = useRouter();
+  const pathName = usePathname().split("/")[2];
   const { data: sessionData } = useSession();
 
   const { data: projects, refetch } = api.projects.getAll.useQuery(undefined, {
@@ -71,6 +74,7 @@ export default function ProjectSwitcher({ className }: TeamSwitcherProps) {
     onSuccess: (data) => {
       globalStore.setSelectedProject(data);
       void refetch();
+      router.push(`/${selectedProject?.id}/${pathName}`);
       setShowNewProjectDialog(false);
     },
   });
@@ -116,6 +120,7 @@ export default function ProjectSwitcher({ className }: TeamSwitcherProps) {
                     key={project.id}
                     onSelect={() => {
                       globalStore.setSelectedProject(project);
+                      router.push(`/${selectedProject?.id}/${pathName}`);
                       setOpen(false);
                     }}
                     className="text-sm"
