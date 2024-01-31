@@ -46,7 +46,6 @@ export function LoginForm() {
       ...neData,
       redirect: false,
     });
-    console.log(res);
   };
 
   return (

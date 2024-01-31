@@ -30,14 +30,14 @@ export function Sidebar() {
               label: "",
               icon: ListTodo,
               variant: "default",
-              path: `/${selectedProject?.id}/board`,
+              path: `/projects/${selectedProject?.id}/board`,
             },
             {
               title: "Analytics",
               label: "",
               icon: GanttChartSquare,
               variant: "ghost",
-              path: `/${selectedProject?.id}/analytics`,
+              path: `/projects/${selectedProject?.id}/analytics`,
             },
           ]}
         />

@@ -18,7 +18,7 @@ export const ProtectedLayout = ({ children }: { children: ReactNode }) => {
       return setChildren(LoadingScreen);
     }
     if (isAuthRoute && session.data) {
-      router.push(`/${selectedProject?.id}/board`);
+      router.push(`/projects`);
       return setChildren(LoadingScreen);
     }
     setChildren(children);
