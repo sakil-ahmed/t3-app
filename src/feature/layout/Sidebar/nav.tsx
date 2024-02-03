@@ -42,7 +42,7 @@ export function Nav({ links }: NavProps) {
                   className={cn(
                     buttonVariants({
                       variant:
-                        link.path.split("/")[2] === pathname[2]
+                        link.path.split("/")[3] === pathname[3]
                           ? "default"
                           : "ghost",
                       size: "icon",
@@ -72,7 +72,7 @@ export function Nav({ links }: NavProps) {
               className={cn(
                 buttonVariants({
                   variant:
-                    link.path.split("/")[2] === pathname[2]
+                    link.path.split("/")[3] === pathname[3]
                       ? "default"
                       : "ghost",
                   size: "lg",

@@ -13,7 +13,7 @@ export default async function ProjectsPage() {
           <div>
             <h3 className="text-lg font-medium">Welcome back!</h3>
             <p className="text-sm text-muted-foreground">
-              {"Here's a list of your Projects for this month!"}
+              {"Create and manage Projects."}
             </p>
           </div>
           <CreateProject />

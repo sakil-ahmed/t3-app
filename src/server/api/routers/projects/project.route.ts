@@ -11,9 +11,7 @@ export const projectRoute = createTRPCRouter({
 
   getAll: protectedProcedure.query(async ({ ctx }) => {
     return ctx.db.projects.findMany({
-      where: {
-        createdBy: ctx.session.user.id,
-      },
+      orderBy: [{ createdAt: "desc" }, { id: "desc" }],
     });
   }),
 });

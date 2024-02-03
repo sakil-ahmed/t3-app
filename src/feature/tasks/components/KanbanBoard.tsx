@@ -112,7 +112,7 @@ export const KanbanBoard = () => {
       onDragEnd={onDragEnd}
       onDragOver={onDragOver}
     >
-      <div className="flex h-screen w-full items-center justify-center overflow-x-auto overflow-y-hidden">
+      <div className="flex w-full items-center justify-center overflow-x-auto overflow-y-hidden px-3">
         <div className="flex gap-4">
           <SortableContext items={columnsId}>
             {columns.map((col) => (

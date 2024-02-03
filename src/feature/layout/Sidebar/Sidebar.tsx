@@ -6,9 +6,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ProjectSwitcher from "@/components/project-switcher";
 import { Nav } from "@/feature/layout/Sidebar/nav";
 import { useGlobalStore } from "@/store/global.store";
+import { usePathname } from "next/navigation";
 
 export function Sidebar() {
-  const { isCollapsed, selectedProject } = useGlobalStore();
+  const { isCollapsed } = useGlobalStore();
+  const pathName = usePathname().split("/")[2];
+  console.log(pathName);
 
   return (
     <div
@@ -30,14 +33,14 @@ export function Sidebar() {
               label: "",
               icon: ListTodo,
               variant: "default",
-              path: `/projects/${selectedProject?.id}/board`,
+              path: `/projects/${pathName}/board`,
             },
             {
               title: "Analytics",
               label: "",
               icon: GanttChartSquare,
               variant: "ghost",
-              path: `/projects/${selectedProject?.id}/analytics`,
+              path: `/projects/${pathName}/analytics`,
             },
           ]}
         />
